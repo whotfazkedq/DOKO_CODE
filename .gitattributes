@@ -1,0 +1,10 @@
+# Forzar la detección de lenguajes específicos por su extensión
+*.py linguist-language=Python
+*.c linguist-language=C
+*.cpp linguist-language=C++
+*.h linguist-language=C++
+*.html linguist-language=HTML
+
+# Evitar que carpetas de diseño o documentación oculten el HTML
+*.html -linguist-documentation
+*.html -linguist-generated
