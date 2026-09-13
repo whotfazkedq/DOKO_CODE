@@ -1,8 +1,10 @@
+package java2;
+
 import java.util.Scanner;
 import java.util.Random;
 import java.util.InputMismatchException;
 
-public class counter { 
+public class count { 
     public static void main(String[] args) throws InterruptedException {
         Random random = new Random();
         Scanner scanner = new Scanner(System.in);
