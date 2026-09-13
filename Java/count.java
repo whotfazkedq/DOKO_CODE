@@ -1,4 +1,4 @@
-package java2;
+package Java;
 
 import java.util.Scanner;
 import java.util.Random;
