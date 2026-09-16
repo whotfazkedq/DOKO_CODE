@@ -3,12 +3,12 @@
 
 int main(){
     double a, b, c;
-    puts("Calculadora de la Hipotenusa de un Triangulo Rectangulo");
-    printf("Ingrese el valor del cateto a: ");
+    puts("Right-Angled Triangle Hypotenuse Calculator");
+    printf("Enter the value of leg a: ");
     scanf("%lf", &a);
-    printf("Ingrese el valor del cateto b: ");
+    printf("Enter the value of leg b: ");
     scanf("%lf", &b);
     c = sqrt((a*a)+(b*b));
-    printf("El valor de la Hipotenusa del Triangulo es: %lf\n", c);
+    printf("The value of the Hypotenuse of the Triangle is: %lf\n", c);
     return 0;
 }
