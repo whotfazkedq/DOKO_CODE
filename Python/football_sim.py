@@ -22,7 +22,7 @@ def main():
             print(f"{teamA} won")
 
         choice = input("Would you play again? (y/n): ").strip().lower()
-        if choice not in ("y", "Y"):
+        if choice not in ("y", "Y", "yes", "Yes"):
             break
         
         print("Closing")
