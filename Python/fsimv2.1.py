@@ -1,7 +1,7 @@
 import random 
 result = [0, 1, 2]
 
-def ch_res(grlA, grlB):#choose_result
+def ch_res(grlA, grlB):
     grlDif = abs(grlA - grlB)
 
     if grlDif <=5:
@@ -20,15 +20,14 @@ def ch_res(grlA, grlB):#choose_result
     elif grlDif in range(36, 99):
         if grlA > grlB: res_we = [5, 94, 1]
         else: res_we = [5, 1, 94]
-
     return random.choices(result, weights=res_we, k=1)[0]
 
-def ch_winn_goals():#choose_winner_goals
+def ch_winn_goals():
     opt = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     opt_we = [20, 16.6, 13.3, 10, 7.7, 5.2, 2.7, 2, 1.5, 1]
     return random.choices(opt, weights=opt_we, k=1)[0]
 
-def ch_score(final_res):#choose_score
+def ch_score(final_res):
     if final_res == 0:
         opt = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         opt_we = [45, 45, 40.6, 35.3, 30, 12.7, 4.2, 1.7, 1, 0.5, 0.01]
