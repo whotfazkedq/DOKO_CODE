@@ -46,13 +46,13 @@ int main(void){
         }
         printf("Your random numbers are: ");
         for (int i = 0; i < count; i++){
-            printf("%d ", nums[i]);
+            printf("| %d |", nums[i]);
         }
         printf("\n");
 
         free(nums);
 
-        printf("Would you like to generate more random numbers? (y/n):");
+        printf("Would you like to generate more random numbers? (y/n): ");
         scanf("%s", &choice);
     } while (choice == 'y' || choice == 'Y');
     puts("Closing");
