@@ -1,7 +1,7 @@
 """
 preparation for v3
 
-now I may add the formations 
+now I may add the formations and everything it adds such as players rating, mvp, scorers, assisters, etc
 or improve loser team randomization
 this is for when I wake up xd 
 or maybe i'll just continue my game, thing i totally should do
@@ -9,6 +9,15 @@ or maybe i'll just continue my game, thing i totally should do
 
 import random 
 result = [0, 1, 2]
+
+def form(teamA, teamB):
+    ch_form_num = input(f"Which formation does {teamA} use? ").strip().lower()
+    print("1. 4-4-2")
+    print("2. 4-3-3")
+    print("3. 3-5-2")
+    print("4. 4-5-1")
+    print("5. 4-2-4")
+    return print(f"{teamA}formation is {ch_form_num}")
 
 def ch_res(grlA, grlB):#choose_result
     grlDif = abs(grlA - grlB)
@@ -78,7 +87,16 @@ def main():
         print("Random Football Match Score")
         teamA = str(input("Enter the name of Team A: "))
         grlA = readInt(f"Enter {teamA}'s GRL(1-99): ")
+        form()
         teamB = str(input("Enter the name of Team B: "))
+        if teamA == teamB:
+            print("Both teams can't have the same name, change at least one character (ex: TeamA1,TeamA2)")
+            choice = input("Do you wanna retry from the beginning? (y/n): ").strip().lower()
+            if choice in ("y", "Yes"):
+                main()
+            elif choice not in ("y", "Yes"):
+                print("Closing")
+                return
         grlB = readInt(f"Enter {teamB}'s GRL(1-99): ")
 
         final_res = ch_res(grlA, grlB)

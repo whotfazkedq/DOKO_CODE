@@ -7,7 +7,7 @@ def ch_res(grlA, grlB):
     if grlDif <=5:
         if grlA > grlB: res_we = [45, 30, 25] 
         elif grlA < grlB: res_we = [45, 25, 30] 
-        else: res_we = [50, 25, 25]
+        elif grlA == grlB: res_we = [50, 25, 25]
     elif grlDif in range(6, 11):
         if grlA > grlB: res_we = [30, 45, 25]
         else: res_we = [30, 25, 45]
@@ -24,13 +24,13 @@ def ch_res(grlA, grlB):
 
 def ch_winn_goals():
     opt = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    opt_we = [20, 16.6, 13.3, 10, 7.7, 5.2, 2.7, 2, 1.5, 1]
+    opt_we = [40, 33.2, 26.6, 20, 15.4, 5.2, 2.7, 2, 1.5, 1]
     return random.choices(opt, weights=opt_we, k=1)[0]
 
 def ch_score(final_res):
     if final_res == 0:
         opt = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-        opt_we = [45, 45, 40.6, 35.3, 30, 12.7, 4.2, 1.7, 1, 0.5, 0.01]
+        opt_we = [55, 50, 45.6, 35.3, 25, 12.7, 4.2, 1.7, 1, 0.5, 0.01]
         score = random.choices(opt, weights=opt_we, k=1)[0]
         return score, score
     if final_res == 1:
@@ -41,12 +41,13 @@ def ch_score(final_res):
         elif scoreA in range(8, 11): scoreB = random.randint(0, scoreA -5)
         return scoreA, scoreB
 
-    scoreB = ch_winn_goals()
-    if scoreA <= 3: scoreB = random.randint(0, scoreA -1)
-    elif scoreA in range(4, 6): scoreB = random.randint(0, scoreA -3)
-    elif scoreA in range(6, 8): scoreB = random.randint(0, scoreA -4)
-    elif scoreA in range(8, 11): scoreB = random.randint(0, scoreA -5)
-    return scoreA, scoreB
+    if final_res == 2:
+        scoreB = ch_winn_goals()
+        if scoreB <= 3: scoreA = random.randint(0, scoreB -1)
+        elif scoreB in range(4, 6): scoreA = random.randint(0, scoreB -3)
+        elif scoreB in range(6, 8): scoreA = random.randint(0, scoreB -4)
+        elif scoreB in range(8, 11): scoreA = random.randint(0, scoreB -5)
+        return scoreA, scoreB
 
 def readInt(prompt):
     while True:
@@ -65,7 +66,7 @@ def main():
         opt = [1,   2,    3,   4,   5,   6,   7,  8,  9,  10]
         we = [ 20, 16.6, 13.3, 10, 7.7, 5.2, 2.7, 2, 1.5, 1] 
 
-        print("Random Football Match Score")
+        print("\nRandom Football Match Score")
         teamA = str(input("Enter the name of Team A: "))
         grlA = readInt(f"Enter {teamA}'s GRL(1-99): ")
         teamB = str(input("Enter the name of Team B: "))
