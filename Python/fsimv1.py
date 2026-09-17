@@ -4,12 +4,9 @@ def main():
     while True:
         opt = [0, 1,    2,   3,   4,   5,  6,  7,  8,  9,  10]
         we = [20, 20, 16.6, 13.3, 10, 7.7, 5.2, 2.7, 2, 1.5, 1] 
-
         print("Random Football Match Score")
         teamA = str(input("Enter the name of Team A: "))
         teamB = str(input("Enter the name of Team B: "))
-
-
         scoreA = random.choices(opt, weights=we, k=1)[0]
         scoreB = random.choices(opt, weights=we, k=1)[0]
 

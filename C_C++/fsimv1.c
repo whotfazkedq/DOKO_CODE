@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-
 int main() {
     int opt[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     int n = sizeof(opt) / sizeof(opt[0]);
@@ -11,12 +10,13 @@ int main() {
     int scoreB = rand() % n;
     char teamA[10];
     char teamB[10];
+    char choice;
     printf("Enter the name of Team A: ");
     scanf("%s", teamA);
     printf("Enter the name of Team B: ");
     scanf("%s", teamB);
 
-    printf("%s %d:%d %s\n", teamA, opt[scoreA], opt[scoreB], teamB);
+    printf("\n%s %d:%d %s\n", teamA, opt[scoreA], opt[scoreB], teamB);
     if (scoreA == scoreB){
         printf("match result was a tie\n");
     }
@@ -27,8 +27,12 @@ int main() {
         printf("%s won\n", teamB);
     }
 
+    printf("Would you like to play again? (y/n): ");
+    scanf("%s", &choice);
+    if (choice == 'y' || choice == 'Y'){
+        main();
+    }
+
     printf("Closing");
-    
-    
     return 0;
 }
