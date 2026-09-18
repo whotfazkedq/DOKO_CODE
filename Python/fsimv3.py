@@ -10,14 +10,84 @@ or maybe i'll just continue my game, thing i totally should do
 import random 
 result = [0, 1, 2]
 
-def form(teamA, teamB):
-    ch_form_num = input(f"Which formation does {teamA} use? ").strip().lower()
+def formA(teamA):
+    ch_form = ""
     print("1. 4-4-2")
     print("2. 4-3-3")
     print("3. 3-5-2")
     print("4. 4-5-1")
     print("5. 4-2-4")
-    return print(f"{teamA}formation is {ch_form_num}")
+    print("6. 3-4-3")
+    print("7. 4-2-3-1")
+    print("8. 3-4-2-1")
+    print("9. 4-1-4-1")
+    print("10. 3-3-4")
+    ch_form_num = str(input(f"Which formation does {teamA} use? "))
+    if ch_form_num == '1':
+        ch_form = '4-4-2'
+    elif ch_form_num == '2':
+        ch_form = '4-3-3'
+    elif ch_form_num == '3':
+        ch_form = '3-5-2'
+    elif ch_form_num == '4':
+        ch_form = '4-5-1'
+    elif ch_form_num == '5':
+        ch_form = '4-2-4'
+    elif ch_form_num == '6':
+        ch_form = '3-4-3'
+    elif ch_form_num == '7':
+        ch_form = '4-2-3-1'
+    elif ch_form_num == '8':
+        ch_form = '3-4-2-1'
+    elif ch_form_num == '9':
+        ch_form = '4-1-4-1'
+    elif ch_form_num == '10':
+        ch_form = '3-3-4'
+    else:
+        print("Invalid option, please try again")
+        return formA(teamA)
+    return print(f"{teamA} formation is {ch_form}")
+
+def formB(teamB):
+    ch_form = ""
+    print("1. 4-4-2")
+    print("2. 4-3-3")
+    print("3. 3-5-2")
+    print("4. 4-5-1")
+    print("5. 4-2-4")
+    print("6. 3-4-3")
+    print("7. 4-2-3-1")
+    print("8. 3-4-2-1")
+    print("9. 4-1-4-1")
+    print("10. 3-3-4")
+    ch_form_num = str(input(f"Which formation does {teamB} use? "))
+    if ch_form_num == '1':
+        ch_form = '4-4-2'
+    elif ch_form_num == '2':
+        ch_form = '4-3-3'
+    elif ch_form_num == '3':
+        ch_form = '3-5-2'
+    elif ch_form_num == '4':
+        ch_form = '4-5-1'
+    elif ch_form_num == '5':
+        ch_form = '4-2-4'
+    elif ch_form_num == '6':
+        ch_form = '3-4-3'
+    elif ch_form_num == '7':
+        ch_form = '4-2-3-1'
+    elif ch_form_num == '8':
+        ch_form = '3-4-2-1'
+    elif ch_form_num == '9':
+        ch_form = '4-1-4-1'
+    elif ch_form_num == '10':
+        ch_form = '3-3-4'
+    else:
+        print("Invalid option, please try again")
+        return formB(teamB)
+    return print(f"{teamB} formation is {ch_form}")
+    
+
+
 
 def ch_res(grlA, grlB):#choose_result
     grlDif = abs(grlA - grlB)
@@ -60,12 +130,13 @@ def ch_score(final_res):#choose_score
         elif scoreA in range(8, 11): scoreB = random.randint(0, scoreA -5)
         return scoreA, scoreB
 
-    scoreB = ch_winn_goals()
-    if scoreA <= 3: scoreB = random.randint(0, scoreA -1)
-    elif scoreA in range(4, 6): scoreB = random.randint(0, scoreA -3)
-    elif scoreA in range(6, 8): scoreB = random.randint(0, scoreA -4)
-    elif scoreA in range(8, 11): scoreB = random.randint(0, scoreA -5)
-    return scoreA, scoreB
+    if final_res == 2:
+        scoreB = ch_winn_goals()
+        if scoreB <= 3: scoreA = random.randint(0, scoreB -1)
+        elif scoreB in range(4, 6): scoreA = random.randint(0, scoreB -3)
+        elif scoreB in range(6, 8): scoreA = random.randint(0, scoreB -4)
+        elif scoreB in range(8, 11): scoreA = random.randint(0, scoreB -5)
+        return scoreA, scoreB
 
 def readInt(prompt):
     while True:
@@ -87,7 +158,7 @@ def main():
         print("Random Football Match Score")
         teamA = str(input("Enter the name of Team A: "))
         grlA = readInt(f"Enter {teamA}'s GRL(1-99): ")
-        form()
+        formA(teamA)
         teamB = str(input("Enter the name of Team B: "))
         if teamA == teamB:
             print("Both teams can't have the same name, change at least one character (ex: TeamA1,TeamA2)")
@@ -98,6 +169,7 @@ def main():
                 print("Closing")
                 return
         grlB = readInt(f"Enter {teamB}'s GRL(1-99): ")
+        formB(teamB)
 
         final_res = ch_res(grlA, grlB)
         scoreA, scoreB = ch_score(final_res)
