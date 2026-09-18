@@ -22,11 +22,16 @@ def main():
             player = str(input("Choose your move: ")).strip().lower()
             if player == 'a':
                 pl_print = 'Rock'
+                print(f"\nYou chose {pl_print}")
             elif player == 'b':
                 pl_print = 'Paper'
+                print(f"\nYou chose {pl_print}")
             elif player == 'c':
                 pl_print = 'Scissors'
-            print(f"\nYou chose {pl_print}")
+                print(f"\nYou chose {pl_print}")
+            else: 
+                print("That's not an available option")
+                return main()
             break
         print("Waiting")
         time.sleep(1)
@@ -56,8 +61,6 @@ def main():
             win()
         elif player == 'c' and cpu == 'Rock':
             lose()
-        else:
-            print("That's not an available option")
         
 
         choice = input("Would you like to try again? (y/n): ").strip().lower()
