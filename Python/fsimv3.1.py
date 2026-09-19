@@ -1,14 +1,32 @@
-"""
-preparation for v3
-
-now I may add the formations and everything it adds such as players rating, mvp, scorers, assisters, etc
-or improve loser team randomization
-this is for when I wake up xd 
-or maybe i'll just continue my game, thing i totally should do
-"""
-
 import random 
 result = [0, 1, 2]
+
+FORMATIONS = {
+    '4-4-2': ['GK', 'RB', 'RCB', 'LCB', 'LB', 'RM', 'RCM', 'LCM', 'LM', 'RST', 'LST'],
+    '4-3-3': ['GK', 'RB', 'CB1', 'CB2', 'LB', 'RCM', 'LCM', 'AM', 'RW', 'ST', 'LW'],
+    '3-5-2': ['GK', 'CB1', 'CB2', 'CB3', 'RM', 'RDM', 'LDM', 'LM', 'AM', 'RST', 'LST'],
+    '4-5-1': ['GK', 'RB', 'CB1', 'CB2', 'LB', 'RM', 'DM1', 'DM2', 'AM', 'LM', 'ST'],
+    '4-2-4': ['GK', 'RB', 'CB1', 'CB2', 'LB', 'CM1', 'CM2', 'RW', 'RST', 'LST', 'LW'],
+    '3-4-3': ['GK', 'RCB', 'CB', 'LCB', 'RM', 'CM1', 'CM2', 'LM', 'RW', 'ST', 'LW'],
+    '4-2-3-1': ['GK', 'RB', 'CB1', 'CB2', 'LB', 'DM', 'CM1', 'CM2', 'RW', 'ST', 'LW'],
+    '3-4-2-1': ['GK', 'RCB', 'CB', 'LCB', 'RM', 'RDM', 'LDM', 'LM', 'RAM', 'LAM', 'ST'],
+    '4-1-4-1': ['GK', 'RB', 'CB1', 'CB2', 'LB', 'DM', 'CM1', 'CM2', 'RW', 'ST', 'LW'],
+    '3-3-4': ['GK', 'RCB', 'CB', 'LCB', 'DM', 'RCM', 'LCM', 'RW', 'RST', 'LST', 'LW'],
+}
+POS_WE = {
+    'GK': 1,
+    'CB': 3, 'RCB': 3, 'LCB': 3,
+    'RB': 4, 'LB': 4,
+    'DM': 5, 'RDM': 5, 'LDM': 5,
+    'CM': 6, 'RCM': 6, 'LCM': 6,
+    'RM': 7, 'LM': 7,
+    'AM': 9, 'RAM': 9, 'LAM': 9,
+    'RW': 10, 'LW': 10,
+    'ST': 12, 'RST': 12, 'LST': 12,
+}
+
+def get_we(pos):
+    return POS_WE.get(pos, 5)
 
 def formA(teamA):
     ch_formA = ""
@@ -48,6 +66,7 @@ def formA(teamA):
         return formA(teamA)
     print(f"{teamA} formation is {ch_formA}")
     return ch_formA
+
 
 def formB(teamB):
     ch_formB = ""
